@@ -1,5 +1,6 @@
 const express = require('express')
 const os = require('os')
+const keys = require('./keys')
 
 const app = express()
 
@@ -7,6 +8,6 @@ app.get('/', (req, res) => {
   res.send(`hello from ${os.hostname()}`)
 })
 
-app.listen(process.env.API_PORT, () => {
-  console.log(`API listening on ${process.env.API_HOST_PORT}`)
+app.listen(keys.apiHostPort, () => {
+  console.log(`API listening on ${keys.apiHostPort}`)
 })

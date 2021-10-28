@@ -21,9 +21,9 @@ services:
   nginx:
     restart: always
     depends_on:
-        - api_1
-        - api_2
-        - api_3
+      - api_1
+      - api_2
+      - api_3
     build:
       dockerfile: Dockerfile
       context: ./nginx
