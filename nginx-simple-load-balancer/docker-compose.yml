@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  api_1:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    environment:
+      - API_HOST_PORT=3001
+  api_2:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    environment:
+      - API_HOST_PORT=3002
+  api_3:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    environment:
+      - API_HOST_PORT=3003
+  nginx:
+    restart: always
+    depends_on:
+        - api_1
+        - api_2
+        - api_3
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '8080:80'
